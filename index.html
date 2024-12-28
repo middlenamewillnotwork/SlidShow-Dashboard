@@ -11,8 +11,65 @@
         <h1>Slideshow - Dashboard</h1>
         <div class="menu">
             <a href="dashboard.html" class="button">Dashboard</a>
-            <a href="admin.html" class="button">Admin</a>
+            <button id="adminButton" class="button">Admin</button>
         </div>
     </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Admin Login</h2>
+            <label for="username">Username:</label>
+            <input type="text" id="username" class="text-input" placeholder="Enter username">
+            <label for="password">Password:</label>
+            <input type="password" id="password" class="text-input" placeholder="Enter password">
+            <button id="loginButton" class="button">Login</button>
+            <button id="cancelButton" class="button">Cancel</button>
+            <p id="errorMessage" class="error hidden"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const adminButton = document.getElementById('adminButton');
+            const loginModal = document.getElementById('loginModal');
+            const loginButton = document.getElementById('loginButton');
+            const cancelButton = document.getElementById('cancelButton');
+            const usernameInput = document.getElementById('username');
+            const passwordInput = document.getElementById('password');
+            const errorMessage = document.getElementById('errorMessage');
+
+            // Show login modal when Admin button is clicked
+            adminButton.addEventListener('click', () => {
+                loginModal.classList.remove('hidden');
+            });
+
+            // Handle login
+            loginButton.addEventListener('click', () => {
+                const username = usernameInput.value.trim();
+                const password = passwordInput.value.trim();
+
+                // Get current time in HH:mm format
+                const now = new Date();
+                const currentTime = now.toTimeString().split(':').slice(0, 2).join(':');
+
+                if (username === 'Amit' && password === currentTime) {
+                    localStorage.setItem('isLoggedIn', 'true');  // Set login state
+                    window.location.href = 'admin.html';
+                } else {
+                    errorMessage.textContent = 'Invalid username or password!';
+                    errorMessage.classList.remove('hidden');
+                }
+            });
+
+            // Hide login modal and reset inputs
+            cancelButton.addEventListener('click', () => {
+                loginModal.classList.add('hidden');
+                usernameInput.value = '';
+                passwordInput.value = '';
+                errorMessage.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
