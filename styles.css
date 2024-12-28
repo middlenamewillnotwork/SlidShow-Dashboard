@@ -12,7 +12,7 @@ body {
 
 .container {
     text-align: center;
-    width: 100%;
+    width: auto;
     max-width: 1000px;
     padding: 20px;
     background: #ffffff;
