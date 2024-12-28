@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Panel</h1>
+        <form id="uploadForm">
+            <input type="file" id="fileInput" accept="image/*" multiple>
+            <button type="button" id="uploadButton" class="button">Upload</button>
+        </form>
+        
+        <label for="dashboardName">Dashboard Name:</label>
+        <input type="text" id="dashboardName" placeholder="Enter dashboard name" class="text-input">
+        
+        <label for="slideshowDuration">Slideshow Duration:</label>
+        <select id="slideshowDuration" class="dropdown">
+            <option value="5000">5 sec</option>
+            <option value="10000">10 sec</option>
+            <option value="15000">15 sec</option>
+            <option value="20000">20 sec</option>
+        </select>
+        
+        <button id="updateSettingsButton" class="button">Update</button>
+        
+        <div id="adminPreview"></div>
+        <button id="openDashboardButton" class="button">Open Dashboard</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
