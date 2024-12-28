@@ -30,6 +30,28 @@
         <div id="adminPreview"></div>
         <button id="openDashboardButton" class="button">Open Dashboard</button>
     </div>
+    <!-- Logout Button positioned outside the container -->
+    <button id="logoutButton" class="logout-button">🔐</button>
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            // Redirect to home page if not logged in
+            if (isLoggedIn !== 'true') {
+                alert('Unauthorized access! Redirecting to home page.');
+                window.location.href = 'index.html';
+            }
+
+            // Logout logic
+            const logoutButton = document.getElementById('logoutButton');
+            logoutButton.addEventListener('click', () => {
+                localStorage.removeItem('isLoggedIn'); // Clear login flag
+                alert('You have been logged out!');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
 </body>
 </html>
